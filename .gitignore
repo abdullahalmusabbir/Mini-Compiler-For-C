@@ -1,0 +1,24 @@
+# Executable files
+*.exe
+*.out
+*.o
+*.obj
+
+# Generated Flex/Bison files
+lex.yy.c
+parser.tab.c
+parser.tab.h
+
+# Build files
+a.out
+
+# VS Code settings
+.vscode/
+
+# Temporary files
+*.tmp
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
