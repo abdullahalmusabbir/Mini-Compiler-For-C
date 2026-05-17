@@ -1,15 +1,15 @@
 %{
-#include "compiler.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+  #include "compiler.h"
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <string.h>
 
-extern int yylex();
-extern int yyline;
-void yyerror(const char* msg);
+  extern int yylex();
+  extern int yyline;
+  void yyerror(const char* msg);
 
-char current_scope[MAX_NAME] = "global";
-ASTNode* ast_root = NULL;
+  char current_scope[MAX_NAME] = "global";
+  ASTNode* ast_root = NULL;
 %}
 
 %union {
@@ -74,7 +74,7 @@ var_decl
           Symbol* s = find_symbol($2);
           if(s != NULL && strcmp(s->scope, current_scope)==0) {
               printf("[SYN WARN] Line %d: '%s' already declared in scope '%s'\n",
-                     yyline, $2, current_scope);
+                    yyline, $2, current_scope);
               error_count++;
           } else {
               add_symbol($2, $1, current_scope, yyline);
@@ -162,7 +162,7 @@ assign_stmt
           Symbol* s = find_symbol($1);
           if(s == NULL) {
               printf("[SYN WARN] Line %d: '%s' used before declaration\n",
-                     yyline, $1);
+                    yyline, $1);
               error_count++;
               add_symbol($1, "unknown", current_scope, yyline);
           } else {
@@ -195,7 +195,7 @@ if_stmt
           add_tac("LABEL",    lbl_else,   "", "");
           add_tac("LABEL",    lbl_end,    "", "");
           $$ = make_node("IF_ELSE", "", $3,
-                         make_node("BRANCHES", "", $6, $10));
+                        make_node("BRANCHES", "", $6, $10));
       }
     ;
 
