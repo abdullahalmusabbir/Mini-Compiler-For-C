@@ -1,35 +1,79 @@
-int x;
-int y;
-int result;
+/* multi-line comment
+   এটা ignore হবে */
 
-int add(int a)
-{
-    int b;
-    b = a + 10;
-    return b;
+// single line comment
+
+struct Point {
+    int x;
+    int y;
+};
+
+int arr[5];
+int *ptr;
+
+int add(int a, int b) {
+    return a + b;
 }
 
-int main()
-{
-    x = 5;
-    y = 3;
-    result = x + y;
+int square(int n) {
+    return n * n;
+}
 
-    if(result > 6)
-    {
-        x = x + 1;
+int main() {
+    /* variables */
+    int x = 10;
+    int y = 20;
+    int z;
+
+    /* array */
+    arr[0] = 5;
+    arr[1] = x + 3;
+
+    /* pointer */
+    ptr = &x;
+    z = *ptr;
+
+    /* function call */
+    z = add(x, y);
+
+    /* && and || TAC */
+    int a = 1;
+    int b = 0;
+    int c;
+    c = a && b;
+    c = a || b;
+
+    /* if-else */
+    if (x > y) {
+        z = x - y;
+    } else {
+        z = y - x;
     }
-    else
-    {
-        y = y + 1;
+
+    /* while */
+    while (x > 0) {
+        x = x - 1;
     }
 
-    while(x < 10)
-    {
-        x = x + 1;
+    /* for loop */
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i * 2;
     }
 
-    printf("Result: %d", result);
+    /* switch-case */
+    switch (z) {
+        case 1:
+            x = 100;
+            break;
+        case 2:
+            x = 200;
+            break;
+        default:
+            x = 0;
+            break;
+    }
 
-    return 0;
+    printf("Result: %d", z);
+
+    return z;
 }
